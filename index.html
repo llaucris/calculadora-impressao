@@ -1,495 +1,62 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calculadora de Impressão — DG Copy</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
-<style>
-:root {
-  --brand: #1a1a2e;
-  --accent: #e63946;
-  --accent2: #457b9d;
-  --surface: #f8f7f4;
-  --white: #ffffff;
-  --text: #1a1a2e;
-  --muted: #6b7280;
-  --border: #e5e3dd;
-  --green: #2d6a4f;
-  --green-bg: #d8f3dc;
-  --red: #c1121f;
-  --red-bg: #ffe0e0;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--surface);
-  color: var(--text);
-  min-height: 100vh;
-}
-.hero {
-  background: var(--brand);
-  color: white;
-  padding: 3rem 2rem 2.5rem;
-  position: relative;
-  overflow: hidden;
-}
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -60px; right: -60px;
-  width: 280px; height: 280px;
-  border-radius: 50%;
-  border: 40px solid rgba(230,57,70,0.15);
-}
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: -40px; left: 10%;
-  width: 160px; height: 160px;
-  border-radius: 50%;
-  border: 30px solid rgba(69,123,157,0.2);
-}
-.logo-tag {
-  display: inline-block;
-  font-family: 'Syne', sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1.25rem;
-  border: 1px solid rgba(230,57,70,0.4);
-  padding: 4px 12px;
-  border-radius: 20px;
-}
-.hero h1 {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(1.8rem, 5vw, 2.8rem);
-  font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: .75rem;
-  position: relative;
-  z-index: 1;
-}
-.hero h1 span { color: var(--accent); }
-.hero p {
-  font-size: 15px;
-  color: rgba(255,255,255,0.65);
-  max-width: 480px;
-  line-height: 1.6;
-  position: relative;
-  z-index: 1;
-}
+DG COPY
+Ferramenta gratuita
+CALCULADORA DE IMPRESSÃO
+Quanto sua empresa gasta com impressão?
+Descubra em segundos o custo real e veja quanto você pode economizar com outsourcing gerenciado.
+VOLUME DE IMPRESSÃO
+Páginas impressas por mês
+2.000
+Funcionários na empresa
+15
+Impressoras / multifuncionais
+3
+SITUAÇÃO ATUAL
+Como você gerencia sua impressão hoje?
 
-.main { max-width: 700px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+Impressora própria
 
-.card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 1.75rem;
-  margin-bottom: 1.25rem;
-}
-.card-title {
-  font-family: 'Syne', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 1.25rem;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.card-title::before {
-  content: '';
-  display: inline-block;
-  width: 3px; height: 14px;
-  background: var(--accent);
-  border-radius: 2px;
-}
+Aluguel simples
 
-.field { margin-bottom: 1.25rem; }
-.field:last-child { margin-bottom: 0; }
-.field label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text);
-  margin-bottom: 10px;
-}
-.field label .val {
-  font-family: 'Syne', sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--accent);
-}
+Outsourcing parcial
 
-input[type=range] {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 4px;
-  background: var(--border);
-  border-radius: 4px;
-  outline: none;
-}
-input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 20px; height: 20px;
-  border-radius: 50%;
-  background: var(--brand);
-  border: 3px solid var(--accent);
-  cursor: pointer;
-  transition: transform .15s;
-}
-input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+Não sei
+Com que frequência a impressora apresenta problemas?
 
-.radio-group { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.radio-option {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  border: 1.5px solid var(--border);
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all .15s;
-  font-size: 13px;
-  font-weight: 500;
-}
-.radio-option:hover { border-color: var(--accent2); background: #f0f4f8; }
-.radio-option.active { border-color: var(--accent); background: #fff5f5; color: var(--accent); }
-.radio-option input { display: none; }
-.radio-dot {
-  width: 14px; height: 14px;
-  border-radius: 50%;
-  border: 2px solid var(--border);
-  flex-shrink: 0;
-  transition: all .15s;
-}
-.radio-option.active .radio-dot { border-color: var(--accent); background: var(--accent); }
+Raramente
 
-.results-card {
-  background: var(--brand);
-  color: white;
-  border-radius: 16px;
-  padding: 2rem;
-  margin-bottom: 1.25rem;
-  position: relative;
-  overflow: hidden;
-}
-.results-card::before {
-  content: '';
-  position: absolute;
-  top: -40px; right: -40px;
-  width: 200px; height: 200px;
-  border-radius: 50%;
-  border: 35px solid rgba(255,255,255,0.04);
-}
-.results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 1.5rem; }
-.result-item { background: rgba(255,255,255,0.07); border-radius: 10px; padding: 1rem; }
-.result-label { font-size: 11px; font-weight: 500; letter-spacing: .05em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
-.result-value {
-  font-family: 'Syne', sans-serif;
-  font-size: 22px;
-  font-weight: 800;
-  color: white;
-  line-height: 1;
-}
-.result-value.accent { color: var(--accent); }
-.result-value.green { color: #52b788; }
+Todo mês
 
-.savings-bar { margin: 1.5rem 0 1rem; }
-.savings-bar-label {
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  color: rgba(255,255,255,0.5);
-  margin-bottom: 8px;
-}
-.bar-track { background: rgba(255,255,255,0.1); border-radius: 4px; height: 8px; overflow: hidden; }
-.bar-fill { height: 100%; background: linear-gradient(90deg, #52b788, #40916c); border-radius: 4px; transition: width .6s cubic-bezier(.34,1.56,.64,1); }
+Toda semana
 
-.savings-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(82,183,136,0.2);
-  border: 1px solid rgba(82,183,136,0.3);
-  border-radius: 20px;
-  padding: 5px 14px;
-  font-size: 13px;
-  font-weight: 500;
-  color: #52b788;
-}
+Com frequência
+CUSTO ATUAL ESTIMADO
+R$ 0
+por mês
+COM OUTSOURCING DG COPY
+R$ 0
+por mês
+ECONOMIA MENSAL
+R$ 0
+estimada
+ECONOMIA ANUAL
+R$ 0
+estimada
+Potencial de redução de custo
+0%
 
-.cta-card {
-  background: var(--accent);
-  color: white;
-  border-radius: 16px;
-  padding: 1.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-.cta-card h3 {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 800;
-  line-height: 1.2;
-}
-.cta-card p { font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.5; }
-.cta-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: white;
-  color: var(--accent);
-  font-family: 'Syne', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  padding: 12px 22px;
-  border-radius: 10px;
-  text-decoration: none;
-  width: fit-content;
-  letter-spacing: .02em;
-  transition: transform .15s, box-shadow .15s;
-}
-.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
-
-.breakdown {
-  border-top: 1px solid rgba(255,255,255,0.1);
-  margin-top: 1rem;
-  padding-top: 1rem;
-}
-.breakdown-title { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; color: rgba(255,255,255,0.4); margin-bottom: 10px; }
-.breakdown-row { display: flex; justify-content: space-between; font-size: 13px; color: rgba(255,255,255,0.65); padding: 4px 0; }
-.breakdown-row.total { color: white; font-weight: 500; border-top: 1px solid rgba(255,255,255,0.15); margin-top: 6px; padding-top: 8px; }
-</style>
-</head>
-<body>
-
-<div class="hero">
-  <div class="logo-tag">DG Copy • Ferramenta Gratuita</div>
-  <h1>Quanto sua empresa<br>gasta com <span>impressão</span>?</h1>
-  <p>Calcule em segundos o custo real e veja o quanto você poderia economizar com outsourcing.</p>
-</div>
-
-<div class="main">
-
-  <div class="card">
-    <div class="card-title">Volume de impressão</div>
-
-    <div class="field">
-      <label>Páginas impressas por mês <span class="val" id="val-pages">2.000</span></label>
-      <input type="range" id="pages" min="200" max="50000" step="200" value="2000" oninput="calc()">
-    </div>
-
-    <div class="field">
-      <label>Funcionários na empresa <span class="val" id="val-people">15</span></label>
-      <input type="range" id="people" min="2" max="200" step="1" value="15" oninput="calc()">
-    </div>
-
-    <div class="field">
-      <label>Impressoras / multifuncionais <span class="val" id="val-printers">3</span></label>
-      <input type="range" id="printers" min="1" max="30" step="1" value="3" oninput="calc()">
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title">Situação atual</div>
-
-    <div class="field">
-      <label>Como você gerencia sua impressão hoje?</label>
-      <div class="radio-group" id="model-group">
-        <label class="radio-option active" onclick="selectModel('own',this)">
-          <input type="radio" name="model" value="own" checked>
-          <div class="radio-dot"></div>
-          Impressora própria
-        </label>
-        <label class="radio-option" onclick="selectModel('lease',this)">
-          <input type="radio" name="model" value="lease">
-          <div class="radio-dot"></div>
-          Aluguel simples
-        </label>
-        <label class="radio-option" onclick="selectModel('outsource',this)">
-          <input type="radio" name="model" value="outsource">
-          <div class="radio-dot"></div>
-          Outsourcing parcial
-        </label>
-        <label class="radio-option" onclick="selectModel('none',this)">
-          <input type="radio" name="model" value="none">
-          <div class="radio-dot"></div>
-          Não sei
-        </label>
-      </div>
-    </div>
-
-    <div class="field">
-      <label>Com que frequência a impressora apresenta problemas?</label>
-      <div class="radio-group" id="maint-group">
-        <label class="radio-option active" onclick="selectMaint('rare',this)">
-          <input type="radio" name="maint" value="rare" checked>
-          <div class="radio-dot"></div>
-          Raramente
-        </label>
-        <label class="radio-option" onclick="selectMaint('monthly',this)">
-          <input type="radio" name="maint" value="monthly">
-          <div class="radio-dot"></div>
-          Todo mês
-        </label>
-        <label class="radio-option" onclick="selectMaint('weekly',this)">
-          <input type="radio" name="maint" value="weekly">
-          <div class="radio-dot"></div>
-          Toda semana
-        </label>
-        <label class="radio-option" onclick="selectMaint('always',this)">
-          <input type="radio" name="maint" value="always">
-          <div class="radio-dot"></div>
-          Com frequência
-        </label>
-      </div>
-    </div>
-  </div>
-
-  <div class="results-card" id="results">
-    <div class="results-grid">
-      <div class="result-item">
-        <div class="result-label">Custo atual estimado</div>
-        <div class="result-value accent" id="r-current">R$&nbsp;0</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px">por mês</div>
-      </div>
-      <div class="result-item">
-        <div class="result-label">Com outsourcing DG Copy</div>
-        <div class="result-value green" id="r-outsource">R$&nbsp;0</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px">por mês</div>
-      </div>
-      <div class="result-item">
-        <div class="result-label">Economia mensal</div>
-        <div class="result-value" id="r-monthly-save">R$&nbsp;0</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px">estimada</div>
-      </div>
-      <div class="result-item">
-        <div class="result-label">Economia anual</div>
-        <div class="result-value" id="r-annual-save">R$&nbsp;0</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px">estimada</div>
-      </div>
-    </div>
-
-    <div class="savings-bar">
-      <div class="savings-bar-label">
-        <span>Potencial de redução de custo</span>
-        <span id="r-pct">0%</span>
-      </div>
-      <div class="bar-track"><div class="bar-fill" id="bar" style="width:0%"></div></div>
-    </div>
-
-    <div class="savings-tag" id="savings-tag">✓ Calculando economia...</div>
-
-    <div class="breakdown">
-      <div class="breakdown-title">Detalhamento do custo atual</div>
-      <div class="breakdown-row"><span>Suprimentos (toner, papel, peças)</span><span id="b-supplies">—</span></div>
-      <div class="breakdown-row"><span>Manutenção e assistência técnica</span><span id="b-maint">—</span></div>
-      <div class="breakdown-row"><span>Depreciação / aluguel dos equipamentos</span><span id="b-depr">—</span></div>
-      <div class="breakdown-row"><span>Improdutividade por paradas</span><span id="b-downtime">—</span></div>
-      <div class="breakdown-row total"><span>Total estimado / mês</span><span id="b-total">—</span></div>
-    </div>
-  </div>
-
-  <div class="cta-card">
-    <h3>Quer um diagnóstico real e uma proposta sob medida?</h3>
-    <p>Nosso especialista vai até sua empresa — sem custo — para levantar o ambiente atual e mostrar exatamente quanto você pode economizar.</p>
-    <a href="https://api.whatsapp.com/send/?phone=5511956045872&text=Ol%C3%A1!%20Fiz%20a%20calculadora%20no%20site%20e%20quero%20um%20diagn%C3%B3stico%20gratuito%20de%20impress%C3%A3o." target="_blank" class="cta-btn">
-      📲 Falar com especialista agora
-    </a>
-  </div>
-
-</div>
-
-<script>
-let currentModel = 'own';
-let currentMaint = 'rare';
-
-function selectModel(val, el) {
-  currentModel = val;
-  document.querySelectorAll('#model-group .radio-option').forEach(e => e.classList.remove('active'));
-  el.classList.add('active');
-  calc();
-}
-function selectMaint(val, el) {
-  currentMaint = val;
-  document.querySelectorAll('#maint-group .radio-option').forEach(e => e.classList.remove('active'));
-  el.classList.add('active');
-  calc();
-}
-
-function fmt(n) {
-  return 'R$ ' + Math.round(n).toLocaleString('pt-BR');
-}
-
-function calc() {
-  const pages = parseInt(document.getElementById('pages').value);
-  const people = parseInt(document.getElementById('people').value);
-  const printers = parseInt(document.getElementById('printers').value);
-
-  document.getElementById('val-pages').textContent = pages.toLocaleString('pt-BR');
-  document.getElementById('val-people').textContent = people;
-  document.getElementById('val-printers').textContent = printers;
-
-  // Custo por página (toner + papel + peças)
-  const cpPage = 0.12;
-  const supplies = pages * cpPage;
-
-  // Manutenção base por equipamento
-  const maintBase = { rare: 80, monthly: 200, weekly: 480, always: 800 };
-  const maintCost = (maintBase[currentMaint] || 80) * printers;
-
-  // Depreciação / aluguel
-  const deprModel = { own: printers * 350, lease: printers * 280, outsource: printers * 200, none: printers * 350 };
-  const deprCost = deprModel[currentModel] || printers * 350;
-
-  // Improdutividade
-  const downtimeModel = { rare: 0, monthly: people * 40, weekly: people * 150, always: people * 280 };
-  const downtime = downtimeModel[currentMaint] || 0;
-
-  const total = supplies + maintCost + deprCost + downtime;
-
-  // Outsourcing: paga só pelo volume impresso (~60% do custo total)
-  const outsourceCost = pages * 0.07 + (printers * 120);
-
-  const saving = total - outsourceCost;
-  const savingPct = Math.round((saving / total) * 100);
-  const pct = Math.max(0, Math.min(100, savingPct));
-
-  document.getElementById('r-current').textContent = fmt(total);
-  document.getElementById('r-outsource').textContent = fmt(outsourceCost);
-  document.getElementById('r-monthly-save').textContent = fmt(saving);
-  document.getElementById('r-annual-save').textContent = fmt(saving * 12);
-  document.getElementById('r-pct').textContent = pct + '%';
-  document.getElementById('bar').style.width = pct + '%';
-
-  document.getElementById('b-supplies').textContent = fmt(supplies);
-  document.getElementById('b-maint').textContent = fmt(maintCost);
-  document.getElementById('b-depr').textContent = fmt(deprCost);
-  document.getElementById('b-downtime').textContent = fmt(downtime);
-  document.getElementById('b-total').textContent = fmt(total);
-
-  const tag = document.getElementById('savings-tag');
-  if (pct >= 30) {
-    tag.textContent = `✓ Você pode economizar até ${pct}% com outsourcing`;
-    tag.style.color = '#52b788';
-    tag.style.borderColor = 'rgba(82,183,136,0.3)';
-    tag.style.background = 'rgba(82,183,136,0.15)';
-  } else {
-    tag.textContent = `Estimativa de redução: ${pct}% no custo total`;
-  }
-}
-
-calc();
-</script>
-</body>
-</html>
+Calculando...
+DETALHAMENTO DO CUSTO ATUAL
+Suprimentos (toner, papel, peças)
+—
+Manutenção e assistência técnica
+—
+Depreciação / aluguel dos equipamentos
+—
+Improdutividade por paradas
+—
+Total estimado / mês
+—
+Quer saber o valor exato para a sua empresa?
+Um especialista DG Copy vai até você — sem custo — para fazer o levantamento real do seu ambiente de impressão e apresentar uma proposta sob medida.
+📲 Falar com especialista no WhatsApp
+DG Copy — Outsourcing de Impressão  |  dgcopy.com.br  |  (11) 3756-0081
